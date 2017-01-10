@@ -32,7 +32,6 @@ var Form = React.createClass({
 		var age = calculate();
 		return(
 			<div>
-				<h1>Let us find out how old you are!</h1>
 				<form>
 					<input type="text" placeholder="Type birthyear" onChange={this.handleChange}/>
 					<input type="submit" value="click me!" onClick={this.handleChange} />
