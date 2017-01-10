@@ -1,4 +1,4 @@
-function Calculate(userYear){
+function calculate(userYear){
 	var d = new Date(); 
 	var n = d.getFullYear();
 	var userAge = (n - userYear); 
@@ -8,9 +8,9 @@ function Calculate(userYear){
 function Year(props){
 	return(
 		<div>
-			<p> Birthyear is {props.textToDisplay}. Therefore.... 
+			<p> Birthyear is {props.value}. Therefore.... 
 			</p>
-			<p>You are {props.value} years old!</p>
+			<p>You are {props.age} years old!</p>
 		</div>	
 		)
 }
@@ -18,25 +18,25 @@ function Year(props){
 var Form = React.createClass({
 	getInitialState: function() {
 		return{
-			value: ''
+			value: "???"
 		}
 	},
 
 	handleChange: function(event){
 		this.setState({
-			value: event.target.value
+			value: (2017 - event.target.value)
 		});
 	},
 
 	render: function(){
-		var age = Calculate()
+		var age = calculate();
 		return(
 			<div>
 				<h1>Let us find out how old you are!</h1>
 				<form>
-					<input type="text" defaultValue="Type birthyear" />
+					<input type="text" placeholder="Type birthyear" onChange={this.handleChange}/>
 					<input type="submit" value="click me!" onClick={this.handleChange} />
-					<Year textToDisplay={this.state.value} value={this.age}/>
+					<Year textToDisplay={this.state.value} value={this.age} age={this.state.value} />
 				</form>
 			</div>
 		)
